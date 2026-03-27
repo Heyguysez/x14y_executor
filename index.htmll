@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Xl4y_ Executor</title>
+    
+    <!-- PWA for better mobile app feel -->
+    <link rel="manifest" href="data:application/manifest+json,{
+      &quot;name&quot;:&quot;Xl4y_ Executor&quot;,
+      &quot;short_name&quot;:&quot;Xl4y_&quot;,
+      &quot;start_url&quot;:&quot;.&quot;,
+      &quot;display&quot;:&quot;standalone&quot;,
+      &quot;background_color&quot;:&quot;#0a0a0a&quot;,
+      &quot;theme_color&quot;:&quot;#00ff9d&quot;,
+      &quot;icons&quot;: [
+        {&quot;src&quot;:&quot;https://via.placeholder.com/192/00ff9d/111?text=Xl4y&quot;,&quot;sizes&quot;:&quot;192x192&quot;,&quot;type&quot;:&quot;image/png&quot;},
+        {&quot;src&quot;:&quot;https://via.placeholder.com/512/00ff9d/111?text=Xl4y&quot;,&quot;sizes&quot;:&quot;512x512&quot;,&quot;type&quot;:&quot;image/png&quot;,&quot;purpose&quot;:&quot;maskable&quot;}
+      ]
+    }">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Xl4y_ Executor">
+
+    <style>
+        body { 
+            margin:0; padding:0; 
+            background: linear-gradient(135deg, #0a0a0a, #1a0033); 
+            color:#00ff9d; 
+            font-family:system-ui,sans-serif; 
+            text-align:center; 
+            min-height:100vh; 
+        }
+        .header { 
+            padding:40px 20px 25px; 
+            background:rgba(0,0,0,0.85); 
+            border-bottom:4px solid #00ff9d; 
+        }
+        h1 { 
+            font-size:3.6em; 
+            margin:0; 
+            letter-spacing:6px; 
+            color:#00ff9d; 
+            text-shadow:0 0 25px #00ff9d, 0 0 50px #ff00ff; 
+        }
+        .subtitle { 
+            font-size:1.45em; 
+            color:#ff00ff; 
+            margin:10px 0 0; 
+        }
+        .container { padding:25px 15px; }
+        button {
+            width:90%; 
+            max-width:440px; 
+            padding:22px; 
+            font-size:1.45em; 
+            font-weight:bold;
+            border:none; 
+            border-radius:14px; 
+            margin:15px auto; 
+            display:block;
+            box-shadow:0 0 30px #00ff9d; 
+            transition:all 0.3s;
+        }
+        .android-btn { background:#00ff9d; color:#000; }
+        .ios-btn { 
+            background:#ff00ff; 
+            color:white; 
+            box-shadow:0 0 35px #ff00ff; 
+            font-size:1.5em;
+        }
+        button:active { transform:scale(0.96); }
+        #deviceInfo { 
+            font-size:1.35em; 
+            margin:20px 0; 
+            padding:18px; 
+            background:#111; 
+            border-radius:12px; 
+            border:1px solid #00ff9d; 
+        }
+        .status { 
+            margin:30px 15px; 
+            padding:22px; 
+            background:#111; 
+            border:1px solid #00ff9d; 
+            border-radius:12px; 
+            font-size:1.2em; 
+            min-height:90px; 
+            line-height:1.5;
+        }
+        .steps {
+            text-align:left;
+            max-width:420px;
+            margin:20px auto;
+            padding:15px;
+            background:#1a1a2e;
+            border-radius:10px;
+            font-size:1.05em;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Xl4y_</h1>
+        <p class="subtitle">ROBLOX EXECUTOR</p>
+    </div>
+
+    <div class="container">
+        <div id="deviceInfo">Detecting your device...</div>
+
+        <div id="androidSection" style="display:none;">
+            <button class="android-btn" onclick="startAndroidDownload()">📥 Download Xl4y_ APK (Direct Install)</button>
+        </div>
+
+        <div id="iosSection" style="display:none;">
+            <button class="ios-btn" onclick="startIOSDownload()">📥 Download Xl4y_ IPA (Direct Install)</button>
+            <div class="steps" id="iosSteps" style="display:none;">
+                <strong>iOS Installation Steps:</strong><br>
+                1. Download the IPA using eSign, Scarlet, or similar signer app<br>
+                2. Sign & install the IPA<br>
+                3. Go to Settings → General → VPN & Device Management<br>
+                4. Find the profile and tap "Trust"<br>
+                5. Open Xl4y_ and inject scripts into Roblox
+            </div>
+        </div>
+
+        <div class="status" id="status"></div>
+
+        <p style="color:#ffcc00; font-size:0.95em; margin-top:30px; padding:0 15px;">
+            ⚠️ Demo page only • Real executors can get your Roblox account banned.<br>
+            Use at your own risk. No actual file is downloaded here.
+        </p>
+    </div>
+
+    <script>
+        function detectDevice() {
+            const ua = navigator.userAgent.toLowerCase();
+            const info = document.getElementById('deviceInfo');
+            const androidSec = document.getElementById('androidSection');
+            const iosSec = document.getElementById('iosSection');
+
+            if (/android/.test(ua)) {
+                info.innerHTML = '✅ <strong>Android</strong> detected';
+                androidSec.style.display = 'block';
+            } else if (/iphone|ipad|ipod/.test(ua)) {
+                info.innerHTML = '✅ <strong>iOS (iPhone/iPad)</strong> detected - Best for IPA';
+                iosSec.style.display = 'block';
+            } else {
+                info.innerHTML = '📱 Open on your phone for best results';
+                androidSec.style.display = 'block';
+                iosSec.style.display = 'block';
+            }
+        }
+
+        function startAndroidDownload() {
+            document.getElementById('status').innerHTML = '🚀 Downloading Xl4y_ APK...<br><br>Open the file → Install (allow Unknown Sources).';
+        }
+
+        function startIOSDownload() {
+            const status = document.getElementById('status');
+            const steps = document.getElementById('iosSteps');
+            
+            status.innerHTML = '📥 Preparing Xl4y_ IPA for iOS...<br><br>Simulating direct download (demo).';
+            steps.style.display = 'block';
+            
+            // In a real page you would do: window.location.href = 'xl4y-executor.ipa';
+        }
+
+        window.onload = detectDevice;
+    </script>
+</body>
+</html>
