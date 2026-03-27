@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Xl4y_ Executor</title>
+    
+    <!-- PWA Support -->
+    <link rel="manifest" href="data:application/manifest+json,{
+      &quot;name&quot;:&quot;Xl4y_ Executor&quot;,
+      &quot;short_name&quot;:&quot;Xl4y_&quot;,
+      &quot;start_url&quot;:&quot;.&quot;,
+      &quot;display&quot;:&quot;standalone&quot;,
+      &quot;background_color&quot;:&quot;#0a0a0a&quot;,
+      &quot;theme_color&quot;:&quot;#00ff9d&quot;,
+      &quot;icons&quot;: [
+        {&quot;src&quot;:&quot;https://via.placeholder.com/192/00ff9d/111?text=Xl4y&quot;,&quot;sizes&quot;:&quot;192x192&quot;,&quot;type&quot;:&quot;image/png&quot;},
+        {&quot;src&quot;:&quot;https://via.placeholder.com/512/00ff9d/111?text=Xl4y&quot;,&quot;sizes&quot;:&quot;512x512&quot;,&quot;type&quot;:&quot;image/png&quot;,&quot;purpose&quot;:&quot;maskable&quot;}
+      ]
+    }">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Xl4y_ Executor">
+
+    <style>
+        body { margin:0; padding:0; background: linear-gradient(135deg, #0a0a0a, #1a0033); color:#00ff9d; font-family:system-ui,sans-serif; text-align:center; min-height:100vh; }
+        .header { padding:40px 20px 25px; background:rgba(0,0,0,0.85); border-bottom:4px solid #00ff9d; }
+        h1 { font-size:3.6em; margin:0; letter-spacing:6px; color:#00ff9d; text-shadow:0 0 25px #00ff9d, 0 0 50px #ff00ff; }
+        .subtitle { font-size:1.45em; color:#ff00ff; margin:10px 0 0; }
+        .container { padding:25px 15px; }
+        button {
+            width:90%; max-width:440px; padding:22px; font-size:1.45em; font-weight:bold;
+            border:none; border-radius:14px; margin:15px auto; display:block;
+            box-shadow:0 0 30px #00ff9d; transition:all
